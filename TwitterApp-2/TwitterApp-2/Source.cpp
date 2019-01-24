@@ -1,4 +1,4 @@
-#include <iostream>
+w#include <iostream>
 #include <string>
 #include <fstream>
 
@@ -50,11 +50,19 @@ int main() {
 			cout << "Reading from file" << endl;
 			while (!inFile.eof()) {
 				if (myData.find("Paris") <= myData.length()) {
+					cout << myData << endl;
 				}
 			}
 		}
 	else if (a == 3) {
 			cout << "You have chosen:" << a << str3 << endl;
+			cout << "Reading from file" << endl;
+			while (!inFile.eof()) {
+				if (myData.find("Paris") <= myData.lenght()) {
+					cout << myData << endl;
+
+				}
+			}
 		}
 		else if (a == 4) {
 			cout << "You have chosen:" << a << str4 << endl;

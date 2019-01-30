@@ -2,94 +2,292 @@
 #include <string>
 #include <fstream>
 using namespace std;
+ 
+char str[100] = "total number of tweets in the data set";
+char str2[100] = "tweets which mention money";
+char str3[100] = "tweets which mention politics";
+char str4[100] = "tweets which mention the word Paris";
+char str5[100] = "tweets which mention the word DreamWorks";
+char str6[100] = "tweets which mention the word Uber";
+char str7[100] = "tweets which mention the word Trump";
+char str8[100] = "tweets which mention the word Football";
+char str9[100] = "tweets which mention America";
+char str10[100] = "tweets which mention Britain";
 
-/*char str[100] = " Total number of tweets in the data set";
-char str2[100] = " Tweets which mention money";
-char str3[100] = " Tweets which mention politics";
-char str4[100] = " Tweets which mention the word Paris";
-char str5[100] = " Tweets which mention the word DreamWorks";
-char str6[100] = " Tweets which mention the word Uber";*/
+char str11[100] = "Please type in the corresponding number from the list below";
+char str12[100] = "Please input 1 to see the total number of tweets in the data set";
+char str13[100] = "Please input 2 to see the total number of tweets which mention money";
+char str14[100] = "Please input 3 to see the total number of tweets which mention politics";
+char str15[100] = "Please input 4 to see tweets which contain the word Paris";
+char str16[100] = "Please input 5 to see tweets which contain the word DreamWorks";
+char str17[100] = "Please input 6 to see tweets which contain the word Uber";
+char str18[100] = "Please input 7 to see tweets which contain the word Trump";
+char str19[100] = "Please input 8 to see tweets which contain the word Fooball";
+char str20[100] = "Please input 9 to see tweets which contain the word America";
+char str21[100] = "Please input 10 to see tweets which contain the word Britain";
+char str22[100] = "Please input 11 to exit the program";
 
+
+
+bool programRunning = true;
+int tweetCounter = 0;
+int moneyCounter = 0;
+int politicCounter = 0;
+int americaCounter = 0;
+int a = 0;
+int b = 0;
 int main() {
-
-	string myData;
-	int a = 0;
-	/*cout << "Welcome to my app" << endl;
-
-
-
-	cout << "Please type in the corresponding number from the list below" << endl;
-	cout << "Please input 1 to see the total number of tweets in the data set" << endl;
-	cout << "Please input 2 to see the total number of tweets which mention money" << endl;
-	cout << "Please input 3 to see the total number of tweets which mention politics" << endl;
-	cout << "Please input 4 to see the total number of tweets which contain the word Paris" << endl;
-	cout << "Please input 5 to see the total number of tweets which contain the word DreamWorks" << endl;
-	cout << "Please input 6 to see the total number of tweets which contain the word Uber" << endl;
-	*/
 	ifstream inFile;
-	inFile.open("sampleTweets.csv");
-	while (a != 7) {
+	ifstream inFile2;
+	ifstream inFile3;
+	ifstream inFile4;
+	ifstream inFile5;
+	ifstream inFile6;
+	ifstream inFile7;
+	ifstream inFile8;
+	ifstream inFile9;
+	ifstream inFile10;
+	
+	
+	string tweetData;
+	string tweetData2;
+	string tweetData3;
+	string tweetData4;
+	string tweetData5;
+	string tweetData6;
+	string tweetData7;
+	string tweetData8;
+	string tweetData9;
+	string tweetData10;
+	
+	cout << "Welcome to my app" << endl;
+	
+
+	while (programRunning == true) {
 		
+		cout << str11 << endl;
+		cout << "----------------------------------------------------------" << endl;
+		cout << str12 << endl;
+		cout << str13 << endl;
+		cout << str14 << endl;
+		cout << str15 << endl;
+		cout << str16 << endl;
+		cout << str17 << endl;
+		cout << str18 << endl;
+		cout << str19 << endl;
+		cout << str20 << endl;
+		cout << str21 << endl;
+		cout << str22 << endl;
+		cout << "----------------------------------------------------------" << endl;
+
+
+
 		cin >> a;
-		int tweetCounter = 0;
-		if (inFile.good() && a == 1) {
-			//cout << "You have chosen: " << a << str << endl;
-			// Basic idea for calling tweets with specific phrases or words.
-			cout << "Reading from file" << endl;
-			//While Loop to count total tweets
-			while (!inFile.eof()) {
-				getline(inFile, myData);
-				tweetCounter++;
-				cout << tweetCounter << endl;
-				
+		if (a == 1) {
+			inFile.open("sampleTweets.csv");
+			if (inFile.good()) {
+				cout << "You have chosen " << str << endl;
+				while (!inFile.eof()) {
+					getline(inFile, tweetData);
+					tweetCounter++;
+				}
+				inFile.close();
+				cout << "The total number of tweets are: " << tweetCounter << endl;
+				cout << "----------------------------------------------------------" << endl;
+				tweetCounter = 0;
 			}
-			inFile.close();
+		}
+		if (a == 2) {
+			inFile2.open("sampleTweets.csv");
+			if (inFile2.good()) {
+				cout << "You have chosen " << str2 << endl;
+				while (!inFile2.eof()) {
+					getline(inFile2, tweetData2);
+					if (tweetData2.find("money") <= tweetData2.length()) {
+						moneyCounter++;
+					}
 
+				}
+				inFile2.close();
+				cout << "The total number of tweets which contain the word money: " << moneyCounter << endl;
+				cout << "----------------------------------------------------------" << endl;
+				moneyCounter = 0;
+			}
+		}
+
+		if (a == 3) {
+			inFile3.open("sampleTweets.csv");
+			if (inFile3.good()) {
+				cout << "You have chosen " << str3 << endl;
+				while (!inFile3.eof()) {
+					getline(inFile3, tweetData3);
+					if (tweetData3.find("politics") <= tweetData3.length()) {
+						politicCounter++;
+					}
+
+				}
+				inFile3.close();
+				cout << "The total number of tweets which contain the word politics: " << politicCounter << endl;
+				cout << "----------------------------------------------------------" << endl;
+				politicCounter = 0;
+
+			}
+		}
+		if (a == 4) {
+			inFile4.open("sampleTweets.csv");
+			if (inFile4.good()) {
+				cout << "You have chosen " << str4 << endl;
+				while (!inFile4.eof()) {
+					getline(inFile4, tweetData4);
+					if (tweetData4.find("Paris") <= tweetData4.length()) {
+						cout << tweetData4 << endl;
+						
+					}
+
+				}
+				inFile4.close();
+				cout << "----------------------------------------------------------" << endl;
+
+
+			}
+		}
+		if (a == 5) {
+			inFile5.open("sampleTweets.csv");
+			if (inFile5.good()) {
+				cout << "You have chosen " << str5 << endl;
+				while (!inFile5.eof()) {
+					getline(inFile5, tweetData5);
+					if (tweetData5.find("DreamWorks") <= tweetData5.length()) {
+						cout << tweetData5 << endl;
+						
+					}
+
+				}
+				inFile5.close();
+				cout << "----------------------------------------------------------" << endl;
+
+
+			}
+		}
+		if (a == 6) {
+			inFile6.open("sampleTweets.csv");
+			if (inFile6.good()) {
+				cout << "You have chosen " << str6 << endl;
+				while (!inFile6.eof()) {
+					getline(inFile6, tweetData6);
+					if (tweetData6.find("Uber") <= tweetData6.length()) {
+						cout << tweetData6 << endl;
+						
+					}
+
+				}
+				inFile.close();
+
+				cout << "----------------------------------------------------------" << endl;
+
+			}
+		}
+		if (a == 7) {
+			inFile7.open("sampleTweets.csv");
+			if (inFile7.good()) {
+				cout << "You have chosen " << str7 << endl;
+				while (!inFile7.eof()) {
+					getline(inFile7, tweetData7);
+					if (tweetData7.find("Trump") <= tweetData7.length()) {
+						cout << tweetData7 << endl;
+						
+					}
+
+				}
+				inFile7.close();
+				cout << "----------------------------------------------------------" << endl;
+			}
+		}
+		if (a == 8) {
+			inFile8.open("sampleTweets.csv");
+			if (inFile8.good()) {
+				cout << "You have chosen " << str8 << endl;
+				while (!inFile8.eof()) {
+					getline(inFile8, tweetData8);
+					if (tweetData8.find("Football") <= tweetData8.length()) {
+						cout << tweetData8 << endl;
+						
+					}
+
+				}
+				inFile8.close();
+				cout << "----------------------------------------------------------" << endl;
+
+			}
+		}
+		if (a == 9) {
+			inFile9.open("sampleTweets.csv");
+			if (inFile9.good()) {
+				cout << "You have chosen " << str9 << endl;
+				while (!inFile9.eof()) {
+					getline(inFile9, tweetData9);
+					if (tweetData9.find("America") <= tweetData9.length()) {
+						americaCounter++;
+					}
+
+				}
+				cout << "The total number of tweets which contain the word America: " << americaCounter << endl;
+				cout << "----------------------------------------------------------" << endl;
+				americaCounter = 0;
+				inFile.close();
+
+			}
+		}
+		if (a == 10) {
+			inFile10.open("sampleTweets.csv");
+			if(inFile10.good()) {
+			cout << "You have chosen " << str10 << endl;
+			while (!inFile10.eof()) {
+				getline(inFile10, tweetData10);
+				if (tweetData10.find("Britain") <= tweetData10.length()) {
+					cout << tweetData10 << endl;
+					
+				}
+
+			}
+			inFile10.close();
+			cout << "----------------------------------------------------------" << endl;
+		}
+		}
+		if (a == 11) {
+			cout << "Have a nice day" << endl;
+			cout << "Please press 1 to end the program" << endl;
+				cin >> b;
+			if (b == 1) {
+				return 0;
+			}
+			
+		}
+
+		while (cin.fail()) {
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Please input a number between 1 and 11" << endl;
+			cout << "----------------------------------------------------------" << endl;
+			cout << str11 << endl;
+			cout << str12 << endl;
+			cout << str13 << endl;
+			cout << str14 << endl;
+			cout << str15 << endl;
+			cout << str16 << endl;
+			cout << str17 << endl;
+			cout << str18 << endl;
+			cout << str19 << endl;
+			cout << str20 << endl;
+			cout << str21 << endl;
+			cout << str22 << endl;
+			cin >> a;
 		}
 		
-		/*else if (inFile.good() && a == 2) {
-			cout << "You have chosen:" << a << str2 << endl;
-			cout << "Reading from file" << endl;
-			while (!inFile.eof()) {
-				if (myData.find("money") <= myData.length()) {
-
-				}
-				inFile.close;
-				cout << myData << endl;
-			}
-		}
-		else if (a == 3) {
-			cout << "You have chosen:" << a << str3 << endl;
-			cout << "Reading from file" << endl;
-			while (!inFile.eof()) {
-				if (myData.find("politics") <= myData.length()) {
-
-
-				}
-				inFile.close;
-				cout << myData << endl;
-			}
-		}
-		else if (a == 4) {
-			cout << "You have chosen:" << a << str4 << endl;
-		}
-		else if (a == 5) {
-			cout << "You have chosen:" << a << str5 << endl;
-		}
-		else if (a == 6) {
-			cout << "You have chosen:" << a << str6 << endl;
-		}
-		else {
-			if (cin.fail()) {
-				cin.clear();
-				cin.ignore(1000, '\n');
-			}
-			cout << "Sorry that is an invalid input, please input a number between 1 and 6" << endl;
-		}
-
-	}*/
-	}
-	return 0;
+} 
+	
+		system("Pause");
+	
 }
 	
 

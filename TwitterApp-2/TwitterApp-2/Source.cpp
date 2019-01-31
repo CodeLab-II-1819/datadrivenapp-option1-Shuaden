@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream>
 using namespace std;
- 
+ // Strings for declaring menu, so that I didn't need to type them out each type in an attempt to make code easier to follow
 char str[100] = "total number of tweets in the data set";
 char str2[100] = "tweets which mention money";
 char str3[100] = "tweets which mention politics";
@@ -28,7 +28,7 @@ char str21[100] = "Please input 10 to see tweets which contain the word Britain"
 char str22[100] = "Please input 11 to exit the program";
 
 
-
+//Ints and bools required for the program
 bool programRunning = true;
 int tweetCounter = 0;
 int moneyCounter = 0;
@@ -37,6 +37,7 @@ int americaCounter = 0;
 int a = 0;
 int b = 0;
 int main() {
+	//the ifstreams which allow my file to recognise it's trying to read from 
 	ifstream inFile;
 	ifstream inFile2;
 	ifstream inFile3;
@@ -62,9 +63,10 @@ int main() {
 	
 	cout << "Welcome to my app" << endl;
 	
-
+	//Overall while loop allowing the program to be reused without being closed
 	while (programRunning == true) {
 		
+		//The declaration of previously mentioned strings, forming my menu
 		cout << str11 << endl;
 		cout << "----------------------------------------------------------" << endl;
 		cout << str12 << endl;
@@ -81,17 +83,23 @@ int main() {
 		cout << "----------------------------------------------------------" << endl;
 
 
-
+		// an iff statement recognising whether the user has inputted 1
 		cin >> a;
 		if (a == 1) {
+			//If 1 was selected then the statement will open the sampletweets
 			inFile.open("sampleTweets.csv");
+			//if the sample tweets are recognised as good then the next if statement runs
 			if (inFile.good()) {
 				cout << "You have chosen " << str << endl;
+				// a while statement which will run until the file is closed such as if it is reaches the end
 				while (!inFile.eof()) {
+					//searches through the file for each tweet then adds a counter
 					getline(inFile, tweetData);
 					tweetCounter++;
 				}
+				//closes the file
 				inFile.close();
+				//Prints the counter total and then resets the counter
 				cout << "The total number of tweets are: " << tweetCounter << endl;
 				cout << "----------------------------------------------------------" << endl;
 				tweetCounter = 0;
@@ -132,14 +140,16 @@ int main() {
 				politicCounter = 0;
 
 			}
-		}
+		} // Different sequence of statements which print all the tweets with a keyword
 		if (a == 4) {
 			inFile4.open("sampleTweets.csv");
 			if (inFile4.good()) {
 				cout << "You have chosen " << str4 << endl;
 				while (!inFile4.eof()) {
 					getline(inFile4, tweetData4);
+					//if statement which finds tweets that contain the word paris
 					if (tweetData4.find("Paris") <= tweetData4.length()) {
+						//Prints all these tweets to the console.
 						cout << tweetData4 << endl;
 						
 					}
@@ -254,6 +264,7 @@ int main() {
 			cout << "----------------------------------------------------------" << endl;
 		}
 		}
+		//Simple if statement to determine whether the user wants to close the program
 		if (a == 11) {
 			cout << "Have a nice day" << endl;
 			cout << "Please press 1 to end the program" << endl;
@@ -263,29 +274,19 @@ int main() {
 			}
 			
 		}
-
+		//While statement for handling incorrect inputs, anything that isn't 1 - 11
 		while (cin.fail()) {
 			cin.clear();
 			cin.ignore(1000, '\n');
 			cout << "Please input a number between 1 and 11" << endl;
 			cout << "----------------------------------------------------------" << endl;
-			cout << str11 << endl;
-			cout << str12 << endl;
-			cout << str13 << endl;
-			cout << str14 << endl;
-			cout << str15 << endl;
-			cout << str16 << endl;
-			cout << str17 << endl;
-			cout << str18 << endl;
-			cout << str19 << endl;
-			cout << str20 << endl;
-			cout << str21 << endl;
-			cout << str22 << endl;
-			cin >> a;
+			
+			
+			
 		}
 		
 } 
-	
+	//System pause to stop the console from closing as soon as it's reached the end
 		system("Pause");
 	
 }
